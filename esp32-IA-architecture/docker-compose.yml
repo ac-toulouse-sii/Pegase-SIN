@@ -1,0 +1,28 @@
+services:
+
+  reception:
+    build: ./reception
+    container_name: esp32-IA-reception
+    # restart: unless-stopped
+    networks:
+      - pegase1
+
+  lcd: 
+    build: ./lcd
+    container_name: esp32-IA-lcd
+    # restart: unless-stopped
+    devices:
+      - "/dev/i2c-1:/dev/i2c-1"
+    networks:
+      - pegase1
+
+  envoi:
+    build: ./envoi
+    container_name: esp32-IA-envoi
+    # restart: unless-stopped
+    networks:
+      - pegase1
+
+networks:
+  pegase1:
+    name: pegase1
