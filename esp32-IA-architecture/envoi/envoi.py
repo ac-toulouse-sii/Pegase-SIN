@@ -56,7 +56,7 @@ def traiter_buffer():
         print("Buffer inexistant")
         return
 
-    with open(BUFFER, "r") as f:
+    with open(BUFFER, "r", encoding="utf-8") as f:
         lignes = f.readlines()
 
     if not lignes:
@@ -86,11 +86,11 @@ def traiter_buffer():
             print("JSON invalide :", ligne)
             reste.append(ligne)
 
-    with open(BUFFER, "w") as f:
+    with open(BUFFER, "w", encoding="utf-8") as f:
         f.writelines(reste)
 
 
 
 while True:
     traiter_buffer()
-    time.sleep(5)
+    time.sleep(1)
