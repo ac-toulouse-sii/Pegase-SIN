@@ -1,0 +1,10 @@
+services:
+  ia:
+    build: ./IA
+    container_name: ia
+    restart: unless-stopped
+    network_mode: pegase1
+
+networks:
+  pegase1:
+    name: pegase1
