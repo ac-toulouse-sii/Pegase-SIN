@@ -3,4 +3,40 @@ services:
     build: ./IA
     container_name: ia
     restart: unless-stopped
+    volumes:
+      - ./data:/data
     network_mode: host
+
+  tri:
+    build: ./TRI
+    container_name: tri
+    restart: unless-stopped
+    volumes:
+      - ./data:/data
+    networks:
+      - pegase1
+
+  envoi:
+    build: ../esp32-IA-architecture/envoi
+    container_name: esp32-IA-envoi
+    restart: unless-stopped
+    volumes:
+      - ./data:/data
+    networks:
+      - pegase1
+
+  lcd:
+    build: ../esp32-IA-architecture/lcd
+    container_name: esp32-IA-lcd
+    restart: unless-stopped
+    devices:
+      - "/dev/i2c-1:/dev/i2c-1"
+    volumes:
+      - ./data:/data
+    network_mode: "host"
+    privileged: true
+
+
+networks:
+  pegase1:
+    name: pegase1

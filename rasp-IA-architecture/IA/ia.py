@@ -1,9 +1,14 @@
+import json
+import os
 import cv2
 import onnxruntime as ort
+from urllib.parse import urlparse
 
 
-URL_STREAM = "http://192.168.8.129:81/stream"
+URL_STREAM = "http://10.42.0.107:81/stream"
 
+ip_esp32 = urlparse(URL_STREAM).hostname
+print("IP ESP32 :", ip_esp32)
 
 # Chargement modèle ONNX
 session = ort.InferenceSession("yolo11s.onnx")
@@ -73,8 +78,7 @@ while True:
         classe = class_scores.argmax()
         confiance = float(class_scores[classe])
 
-
-        if confiance > 0.5:
+        if confiance > 0.6 :
 
             x1 = int(x - w / 2)
             y1 = int(y - h / 2)
@@ -90,7 +94,7 @@ while True:
             names.append(classes[classe])
 
 
-    # Suppression doublons
+    # Suppression des doublons
     indices = cv2.dnn.NMSBoxes(
         boxes,
         scores,
@@ -98,15 +102,30 @@ while True:
         0.45
     )
 
-
+    resultats = []
+    # Résultat brut
     for i in indices:
         if isinstance(i, (list, tuple)):
             i = i[0]
 
-        print(
-            names[i],
-            round(scores[i], 2)
-        )
+        print({
+            "classe": names[i],
+            "confiance": scores[i],
+            "box": boxes[i]
+        })
+        #stocker le dernier resulat dans un tableau avant detre trasnformé en JSON
+        resultats.append({
+            "classe": names[i],
+            "confiance": scores[i],
+            "box": boxes[i],
+            "ip_esp32": ip_esp32
+        })
+
+    with open ("/data/detection.tmp", "w") as f:
+        json.dump(resultats, f)
+
+    os.replace("/data/detection.tmp", "/data/derniere-detection.json")
+
 
 
 cap.release()
