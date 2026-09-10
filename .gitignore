@@ -10,3 +10,6 @@ data/
 
 # VS Code
 .vscode/
+
+# .env signature; domaine
+.env

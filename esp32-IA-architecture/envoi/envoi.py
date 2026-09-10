@@ -5,14 +5,24 @@ import os
 
 BUFFER = "/data/buffer.jsonl"
 
-GROUPE = "PEGASE"
+GROUPE = os.environ.get("PEGASE_GROUPE", "PEGASE")
+
 TIMEOUT = 2
 
-URL = "https://deodat-network.duckdns.org/releve"
+URL = os.environ.get("PEGASE_API_URL")
+API_DOMAIN = os.environ.get("PEGASE_API_DOMAIN")
+API_SIGNATURE = os.environ.get("PEGASE_API_SIGNATURE")
+
+if not URL or not API_DOMAIN or not API_SIGNATURE:
+    raise RuntimeError(
+        "Variables d'environnement manquantes : PEGASE_API_URL, "
+        "PEGASE_API_DOMAIN et PEGASE_API_SIGNATURE doivent être définies "
+        "(voir le fichier .env, à créer à partir de .env.example)."
+    )
 
 PARAMS = {
-    "domain": "deodat",
-    "signature": "5hbI5mkMsNuV5ZfW-Oau6n2ndYEK0f9QpsQgwYVehI4"
+    "domain": API_DOMAIN,
+    "signature": API_SIGNATURE
 }
 
 HEADERS = {

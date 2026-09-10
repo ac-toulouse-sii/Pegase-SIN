@@ -20,6 +20,8 @@ services:
     build: ../esp32-IA-architecture/envoi
     container_name: esp32-IA-envoi
     restart: unless-stopped
+    env_file:
+      .env
     volumes:
       - ./data:/data
     networks:
