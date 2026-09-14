@@ -1,4 +1,4 @@
-# 01 — Déploiement de Raspberry Pi OS avec Raspberry Pi Imager
+# 01 Déploiement de Raspberry Pi OS avec Raspberry Pi Imager
 
 On utilise la version **Lite** (sans interface graphique)
 

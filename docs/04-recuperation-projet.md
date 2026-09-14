@@ -1,4 +1,4 @@
-# 04 — Récupération du projet
+# 04 Récupération du projet
 
 Git a déjà été installé à l'étape 02. Vérification rapide si besoin :
 
