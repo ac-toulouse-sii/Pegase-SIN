@@ -1,22 +1,54 @@
+# 09 : Réseau et hotspot
+
+## Créer le hotspot PEGASE
+
+```bash
+sudo nmcli device wifi hotspot ifname wlan0 ssid PEGASE password "PEGASE123456"
+```
+
+Attribue automatiquement la plage `10.42.0.0/24` (mode "partagé" de NetworkManager), Raspberry Pi en `10.42.0.1`.
+
+Démarrage automatique au redémarrage :
+
+```bash
+sudo nmcli connection modify Hotspot connection.autoconnect yes
+```
+
 ## Deux configurations réseau possibles
 
-### 1. Hotspot directement sur le Raspberry Pi (configuration actuelle)
+### 1. Hotspot sur le Raspberry Pi (configuration actuelle)
 
-Le Raspberry Pi crée lui-même le réseau `PEGASE`, et la caméra s'y connecte directement.
+Le Raspberry Pi crée le réseau `PEGASE`, la caméra s'y connecte directement.
 
-- Autonome : aucun routeur externe nécessaire
-- Plage d'adresses fixe et prévisible (`10.42.0.x`), cohérente avec les IP codées en dur dans `ia.py` et `http_wifi.h`
-- Limite : un seul Raspberry Pi peut héberger ce hotspot par interface WiFi ; pas d'accès à Internet sauf si la connexion filaire RJ45 a un accès à internet
-- Sans accès à Internet, les relevés ne sont pas perdus : `envoi.py` les conserve dans `buffer.jsonl`.
+- Autonome, aucun routeur nécessaire
+- Plage fixe `10.42.0.x`, cohérente avec les IP codées en dur (`ia.py`, `http_wifi.h`)
+- Pas d'accès Internet sauf connexion Ethernet partagée
+- Sans Internet, `envoi.py` conserve les relevés dans `buffer.jsonl` jusqu'au retour du réseau
 
 ### 2. Connexion via un routeur externe
 
-Le Raspberry Pi et les ESP32 rejoignent tous le même réseau WiFi fourni par un routeur (box internet, routeur dédié, téléphone...).
+Tous les appareils rejoignent le même réseau WiFi (box, routeur, téléphone). Nécessite de modifier le code, les valeurs actuelles supposant le hotspot du Pi :
 
-Dans ce cas, il faut modifier le code, car les valeurs actuelles supposent le hotspot du Raspberry Pi :
+- Firmware ESP32 : SSID/mot de passe du routeur au lieu de `PEGASE`
+- `http_wifi.h` : IP réelle du Pi au lieu de `10.42.0.1`
+- `ia.py` : IP réelle de l'ESP32-CAM au lieu de `10.42.0.107`
 
-- Firmware ESP32 (`WiFi.begin("PEGASE", "PEGASE123456")`): remplacer par le SSID et le mot de passe du routeur
-- `http_wifi.h` (`http.begin("http://10.42.0.1:5000/detection")`) : remplacer `10.42.0.1` par l'IP réelle du Raspberry Pi sur le réseau du routeur (`hostname -I` sur le Pi)
-- `rasp-IA-architecture/IA/ia.py` (`URL_STREAM = "http://10.42.0.107:81/stream"`) : remplacer par l'IP réelle de l'ESP32-CAM sur ce même réseau
+IP attribuées par DHCP, peuvent changer après redémarrage.
 
-Sur un réseau routeur, les IP sont généralement attribuées par DHCP et peuvent changer après un redémarrage.
+# Commandes de base
+
+```bash
+nmcli device status
+```
+État des interfaces réseau (`wlan0`, `eth0`...).
+
+```bash
+nmcli connection show
+```
+Liste des connexions configurées.
+
+```bash
+nmcli connection up "<nom>"
+nmcli connection down "<nom>"
+```
+Active / désactive une connexion.

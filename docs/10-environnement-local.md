@@ -1,12 +1,13 @@
-# 0X — Configuration (fichier .env)
+# 10: Configuration (fichier .env)
 
 ## Pourquoi un fichier `.env` ?
 
-Le service `envoi` doit connaître votre API Symfony (URL, identifiants). Ces valeurs ne sont jamais écrites en dur dans le code ni committées : chaque déploiement a les siennes.
+## Pourquoi un fichier `.env` ?
 
-`.env.example` est le modèle (committé, sans valeur sensible). `.env` est votre copie personnelle, remplie avec vos vraies valeurs — listée dans `.gitignore`, jamais envoyée sur GitHub.
+Le service `envoi` a besoin des identifiants de votre serveur (API), jamais écrits en dur dans le code.
 
-`env_file: - .env` dans `docker-compose.yml` indique au service `envoi` de lire ces variables au démarrage.
+`.env.example` est le modèle, committé, sans valeur sensible. `.env` est votre copie remplie, ignorée par git.
+
 
 ## Créer le fichier
 

@@ -1,36 +1,15 @@
-# 0X : Edge Impulse (détection embarquée sur l'ESP32)
+# 14 : Edge Impulse (détection embarquée sur l'ESP32)
 
-## Qu'est-ce qu'Edge Impulse ?
+## Qu'est-ce que c'est ?
 
-Plateforme web pour créer des modèles de machine learning conçus pour tourner **directement sur un microcontrôleur** (TinyML) — à l'inverse d'un modèle classique qui tourne sur un serveur ou un PC puissant.
+Plateforme web pour créer un modèle de machine learning qui tourne directement sur un microcontrôleur, sans serveur ni cloud. C'est l'autre manière de détecter un objet dans PEGASE, en local sur l'ESP32.
 
-## Pourquoi ici, en plus de YOLO sur le Raspberry Pi ?
+## Comment ça marche
 
-PEGASE a deux pipelines de détection distincts et indépendants :
-
-- `rasp-IA-architecture` : YOLO (ONNX) tourne **sur le Raspberry Pi**, qui analyse le flux vidéo envoyé par une ESP32-CAM
-- `esp32-IA-architecture` : le modèle Edge Impulse tourne **directement sur l'ESP32**, qui décide localement s'il y a détection, avant même d'envoyer quoi que ce soit au Raspberry Pi
-
-## Étapes du workflow Edge Impulse
-
-1. Collecte d'images (via l'appareil ou upload manuel sur la plateforme)
-2. Étiquetage des classes (ex. `Bouteille`)
-4. Entraînement d'un modèle compact, adapté aux contraintes mémoire/CPU d'un microcontrôleur
-5. Test / validation de la précision
-6. Export en bibliothèque C++/Arduino (ex. `Pegase-test-chaise-bouteille_inferencing.h`) contenant le modèle entraîné et le moteur d'inférence
-
-## Utilisation dans le sketch
-
-1. Capture d'une image via la caméra
-2. Appel de la fonction d'inférence de la bibliothèque
-3. Récupération d'un score de confiance par classe (ex. `Bouteille` : `0.72`)
-4. Si le score dépasse le seuil défini (`0.60` dans le projet) :  `envoyerSiDetection()` envoie le résultat au Raspberry Pi
-
-## À retenir
-
-- Aucun serveur ni cloud nécessaire pour l'inférence : tout se passe sur l'ESP32
-- La bibliothèque générée est propre à ton modèle entraîné; un autre projet Edge Impulse donnerait un autre fichier
-- Le nom du fichier (`Pegase-test-chaise-bouteille_inferencing.h`) reprend le nom du projet Edge Impulse, suivi de `_inferencing.h`
+- Collecte et étiquetage d'images sur la plateforme (ex. `Bouteille`)
+- Entraînement d'un modèle compact, adapté à un microcontrôleur
+- Export en bibliothèque C++/Arduino, avec le modèle et le moteur d'inférence
+- Sur l'ESP32 : capture, inférence, envoi du résultat au Raspberry Pi si le score dépasse le seuil
 
 ## Documentation officielle
 

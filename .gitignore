@@ -13,3 +13,6 @@ data/
 
 # .env signature; domaine
 .env
+
+#plateformio
+.pio/

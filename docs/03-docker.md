@@ -38,7 +38,7 @@ sudo systemctl enable docker
 
 ## En cas de conflit buildx
 
-Si `docker compose up --build` échoue avec une erreur du type `compose build requires buildx 0.17.0 or later`, c'est un conflit connu entre le paquet `docker-buildx` (installé par Debian en dépendance) et `docker-buildx-plugin`. Correction :
+Si docker compose up --build échoue avec une erreur du type compose build requires buildx 0.17.0 or later:
 
 ```bash
 sudo apt remove docker-buildx

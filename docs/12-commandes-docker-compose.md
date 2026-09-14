@@ -9,7 +9,7 @@ docker compose <votre-commande>
 
 *(remplacez par `esp32-IA-architecture` selon la machine)*
 
-# 0X — Démarrage du système
+# 12: Démarrage du système
 
 ```bash
 docker compose up --build

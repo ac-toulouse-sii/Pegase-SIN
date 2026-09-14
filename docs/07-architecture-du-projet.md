@@ -1,3 +1,5 @@
+# 07 : Architecture du projet
+
 ## rasp-IA-architecture
 
 Reçoit le flux vidéo d'une ESP32-CAM, détecte les objets par IA, filtre les résultats.
