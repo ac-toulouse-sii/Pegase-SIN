@@ -28,7 +28,7 @@ Dans les réglages avancés proposés par Imager :
 - *Paramètres régionaux* : fuseau horaire et disposition du clavier; important de resnigner le pays FR pour utilisation du WiFi
 
 **Services**
-- Activez **SSH** — cochez *"Utiliser un mot de passe"* (le plus simple pour démarrer) ou renseignez une clé publique SSH si vous en avez déjà une
+- Activez **SSH** : cochez *"Utiliser un mot de passe"* ou renseignez une clé publique SSH si vous en avez déjà une
 
 Validez, puis lancez l'écriture
 
