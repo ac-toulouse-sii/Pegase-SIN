@@ -6,6 +6,9 @@
 extern uint8_t *debug_jpeg;
 extern size_t debug_jpeg_len;
 
+unsigned long derniereConnexion = millis();
+
+
 WebServer server(80);
 
 void envoyerSiDetection(const char* objet, float score)
@@ -13,7 +16,15 @@ void envoyerSiDetection(const char* objet, float score)
 if(WiFi.status() == WL_CONNECTED)
     {
         HTTPClient http;
-        http.begin("http://10.42.0.1:5000/detection");
+        /* Adresse du RASPBERRY (et non de la caméra).
+        Elle dépend du réseau : à changer en même temps que WiFi.begin().*/
+
+        /*exemples de reseaux */
+        //http.begin("http://192.168.1.63:5000/detection");
+        // http.begin("http://172.20.10.13:5000/detection");
+
+        http.begin("http://10.42.0.1:5000/detection");  // adresse Hotspot Raspberry
+
         http.addHeader("Content-Type", "application/json");
 
         String json ="{\"objet\":\"" + String(objet) + "\", \"score\":" + String(score, 2) + "}";
@@ -24,9 +35,10 @@ if(WiFi.status() == WL_CONNECTED)
 }
 }
 void initWifi()
-{
-    // WiFi.begin("GUARA SOMONTANO", "guarasomontano");
-    WiFi.begin("PEGASE", "PEGASE123456");
+{   // Réseau auquel la caméra se connecte (un seul actif à la fois)
+
+    //WiFi.begin("login", "password");      // à changer selon le réseau
+    WiFi.begin("PEGASE", "PEGASE123456");   // à changer selon le réseau
 
     Serial.print("Connexion WiFi");
 
@@ -86,4 +98,10 @@ void initWifi()
 void handleWifi()
 {
     server.handleClient();
+    if (millis() - derniereConnexion > 5000)
+    {
+        derniereConnexion = millis();
+        Serial.print("IP CAMERA :");
+        Serial.println(WiFi.localIP());
+    }
 }

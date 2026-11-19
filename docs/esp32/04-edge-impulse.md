@@ -1,4 +1,4 @@
-# 14 : Edge Impulse (détection embarquée sur l'ESP32)
+# 04 : Edge Impulse (détection embarquée sur l'ESP32)
 
 ## Qu'est-ce que c'est ?
 

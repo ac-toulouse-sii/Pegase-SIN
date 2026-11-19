@@ -16,13 +16,6 @@ Codés en dur dans `initWiFi()` : `PEGASE` / `PEGASE123456`
 
 | Route | Rôle |
 |---|---|
-| `/stream` | Flux vidéo MJPEG continu : la seule route utilisée par PEGASE |
+| `/stream` | Flux vidéo MJPEG continu |
 | `/capture` | Capture une image unique en JPEG |
-| `/status` | Retourne les réglages actuels de la caméra en JSON |
-| `/control` | Modifie un réglage de la caméra |
 | `/` | Page HTML de contrôle intégrée à l'exemple Espressif |
-| `/bmp`, `/xclk`, `/reg`, `/greg`, `/pll`, `/resolution` | Routes de debug et réglage avancé, non utilisées par PEGASE |
-
-## À noter
-
-Seule la route `/stream` est réellement exploitée par le projet.

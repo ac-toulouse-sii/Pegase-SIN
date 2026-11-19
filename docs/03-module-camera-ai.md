@@ -1,4 +1,4 @@
-# 08 : Module caméra IA (ESP32-S3 CAM AI, DFRobot)
+# 03 : Module caméra IA (ESP32-S3 CAM AI, DFRobot)
 
 Caméra utilisée dans les deux architectures : diffusion du flux vidéo pour `rasp-IA-architecture` (`ia.py`, `URL_STREAM`), et détection embarquée via Edge Impulse pour `esp32-IA-architecture`.
 

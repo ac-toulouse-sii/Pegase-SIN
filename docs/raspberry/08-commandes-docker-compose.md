@@ -1,4 +1,4 @@
-## Se placer dans le bon dossier
+# 08 Se placer dans le bon dossier
 
 Ces commandes doivent être lancées **depuis le dossier qui contient le `docker-compose.yml` concerné** (`rasp-IA-architecture` ou `esp32-IA-architecture`), sinon Docker ne le trouve pas :
 

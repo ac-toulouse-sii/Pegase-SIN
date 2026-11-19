@@ -1,4 +1,4 @@
-# 17 : Code Python, `ia.py` et `tri.py`
+# 11 : Code Python, `ia.py` et `tri.py`
 
 ## `ia.py` : inférence YOLO
 

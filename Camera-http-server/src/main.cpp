@@ -49,15 +49,15 @@ void connectToWiFi(const char* ssid, const char* password) {
 
 void initWiFi() {
   preferences.begin("wifi", false);
+  /*Renseigner ici le login et le mot de passe
+  du routeur
+  http://<IP_ADDRESS> dans un navigateur permet
+  de voir les images captées*/
+
   // String savedSSID = preferences.getString("ssid", "");
   // String savedPASS = preferences.getString("password", "");
-  // String savedSSID = "HUAWEI-B311-CEDD";
-  // String savedPASS = "fbYJqqJM3fYfyt2h";
-  // String savedSSID = "SIN";
-  // String savedPASS = "09101992";
   String savedSSID = "PEGASE";
   String savedPASS = "PEGASE123456";
-
 
   if (savedSSID.length() > 0 && savedPASS.length() > 0) {
     Serial.println("Found saved WiFi credentials.");

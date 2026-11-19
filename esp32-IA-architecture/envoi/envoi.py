@@ -10,24 +10,22 @@ GROUPE = os.environ.get("PEGASE_GROUPE", "PEGASE")
 TIMEOUT = 2
 
 URL = os.environ.get("PEGASE_API_URL")
-API_DOMAIN = os.environ.get("PEGASE_API_DOMAIN")
-API_SIGNATURE = os.environ.get("PEGASE_API_SIGNATURE")
+API_TOKEN = os.environ.get("PEGASE_API_TOKEN")
 
-if not URL or not API_DOMAIN or not API_SIGNATURE:
-    raise RuntimeError(
-        "Variables d'environnement manquantes : PEGASE_API_URL, "
-        "PEGASE_API_DOMAIN et PEGASE_API_SIGNATURE doivent être définies "
-        "(voir le fichier .env, à créer à partir de .env.example)."
-    )
-
-PARAMS = {
-    "domain": API_DOMAIN,
-    "signature": API_SIGNATURE
-}
+if not URL or not API_TOKEN:
+    raise RuntimeError("Variables manquantes : PEGASE_API_URL et PEGASE_API_TOKEN (voir .env)")
 
 HEADERS = {
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "Authorization": f"Bearer {API_TOKEN}"
 }
+
+if not URL or not API_TOKEN:
+    raise RuntimeError(
+        "Variables d'environnement manquantes : PEGASE_API_URL, "
+        "PEGASE_TOKEN doivent être définies "
+        "(voir le fichier .env, à créer à partir de .env.example)."
+    )
 
 
 def envoi_serveur(objet: str, score: float):
@@ -42,7 +40,6 @@ def envoi_serveur(objet: str, score: float):
     try:
         r = requests.post(
             URL,
-            params=PARAMS,
             json=payload,
             headers=HEADERS,
             timeout=TIMEOUT

@@ -38,6 +38,15 @@ services:
     network_mode: "host"
     privileged: true
 
+  photo-annotee:
+    image: python:3.12-slim
+    container_name: photo
+    restart: unless-stopped
+    volumes:
+      - ./data:/data
+    network_mode: host
+    command: python -m http.server 5001 --directory /data
+
 
 networks:
   pegase1:

@@ -175,7 +175,12 @@ void loop()
 
         if(scoreBouteille > 0.60)
         {
-            Serial.println("Bouteille détectée");
+            Serial.println("********Bouteille détectée********");
+            Serial.println("***********************************");
+            Serial.println("***********************************");
+            Serial.println("***********************************");
+            Serial.println("***********************************");
+
             envoyerSiDetection("bouteille", scoreBouteille);
         }
         else

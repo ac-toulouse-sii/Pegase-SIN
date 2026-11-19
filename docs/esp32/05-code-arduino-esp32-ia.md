@@ -1,4 +1,4 @@
-# 16 : code ESP32-S3 pour Architecture Edge Impulse IA embarquée
+# 05 : code ESP32-S3 pour Architecture Edge Impulse IA embarquée
 
 Développé dans VS Code + PlatformIO
 

@@ -1,4 +1,4 @@
-# 11 : Dockerfiles et dépendances
+# 07 : Dockerfiles et dépendances
 
 Chaque service Python de PEGASE est packagé dans son propre conteneur Docker, construit à partir de deux fichiers présents dans son dossier :
 
