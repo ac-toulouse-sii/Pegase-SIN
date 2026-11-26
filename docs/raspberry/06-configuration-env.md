@@ -1,4 +1,4 @@
-# 10: Configuration (fichier .env)
+# 06 : Configuration (fichier .env)
 
 ## Pourquoi un fichier `.env` ?
 

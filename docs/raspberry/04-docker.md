@@ -1,4 +1,4 @@
-# 03 : Installation de Docker
+# 04 : Installation de Docker
 
 Docker permet de faire tourner les différents services du projet (détection IA, tri, envoi, affichage LCD) chacun dans son propre conteneur, isolé des autres.
 

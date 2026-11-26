@@ -1,4 +1,4 @@
-# 13 : Arrêt du Raspberry Pi
+# 15 : Arrêt du Raspberry Pi
 
 Le système de fichiers est sur une carte SD : couper l'alimentation brutalement peut le corrompre. Toujours arrêter proprement avant de débrancher.
 

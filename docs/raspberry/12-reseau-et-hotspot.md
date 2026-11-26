@@ -1,4 +1,4 @@
-# 09 : Réseau et hotspot
+# 12 : Réseau et hotspot
 
 ## Créer le hotspot PEGASE
 

@@ -1,4 +1,4 @@
-# 06 : Réception des détections, code Python (esp32-IA-architecture)
+# 11 : Réception des détections, code Python (esp32-IA-architecture)
 
 ## `reception.py` : serveur Flask (port 5000)
 

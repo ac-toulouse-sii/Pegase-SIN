@@ -1,4 +1,4 @@
-# 09 Obtenir le modèle YOLO (yolo11s.onnx)
+# 09 : Obtenir le modèle YOLO (yolo11s.onnx)
 
 Le fichier `IA/yolo11s.onnx` n'est pas récupérable directement en téléchargement.
 

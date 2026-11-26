@@ -1,4 +1,4 @@
-# 02 — Mises à jour et utilitaires
+# 02 : Mises à jour et utilitaires
 
 ## Mettre à jour le système
 

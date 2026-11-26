@@ -1,4 +1,4 @@
-# 12 Accès à l'image annotée YOLO
+# 14 : Accès à l'image annotée YOLO
 
 L'image avec les carrés autour des objets détectés est servie par le Raspberry sur le **port 5001**.
 

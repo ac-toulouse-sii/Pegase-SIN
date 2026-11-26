@@ -1,4 +1,4 @@
-# 10 : Qu'est-ce que YOLO ?
+# 08 : Qu'est-ce que YOLO ?
 
 YOLO ("You Only Look Once") est un modèle d'intelligence artificielle de détection d'objets : à partir d'une image, il repère plusieurs objets en une seule passe, avec pour chacun sa position dans l'image, sa classe (ce que c'est) et un score de confiance (à quel point le modèle en est sûr).
 
